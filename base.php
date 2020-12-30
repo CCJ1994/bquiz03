@@ -62,8 +62,8 @@ class DB{
       return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
   }
   function del($id){
-    $sql=" delete * from $this->table ";
-      if(isset($id)){
+    $sql=" delete from $this->table ";
+      
         if(is_array($id)){
           foreach($id as $key=>$value){
             $tmp[]=sprintf("`%s`='%s'",$key,$value);
@@ -72,7 +72,6 @@ class DB{
         }else{
           $sql .= " where `id`='$id'";
         }
-      }
       return $this->pdo->exec($sql);
   }
   function save($arr){

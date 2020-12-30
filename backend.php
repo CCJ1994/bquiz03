@@ -25,7 +25,7 @@ if(!empty($_POST)){
 
 <body>
   <div id="main">
-    <div id="top" style=" background:#999 center; background-size:cover; " title="替代文字">
+    <div class="ct" id="top" style=" background:#999 center; background-size:cover; " title="替代文字">
       <h1>ABC影城</h1>
     </div>
     <div id="top2">
@@ -86,7 +86,7 @@ if(!empty($_POST)){
 
 
     </div>
-    <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
+    <div class="ct" id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
   </div>
 </body>
 
