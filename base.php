@@ -3,6 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 
 $Poster=new DB('poster');
+$Movie=new DB('movie');
 
 class DB{
   protected $dsn="mysql:host=localhost;dbname=db03;charset=utf8";
