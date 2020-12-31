@@ -39,12 +39,12 @@ if(!empty($_POST)){
         ABC影城票價全面八折優惠1個月
       </marquee>
     </div>
-    <div id="mm">
+    <div id="mm" >
       <?php
       if(empty($_SESSION['login'])){
       ?>
       <form action="backend.php" method="post">
-        <table>
+        <table style="margin:auto;">
           <tr>
             <td>帳號</td>
             <td><input type="text" name="acc" id="acc"></td>
