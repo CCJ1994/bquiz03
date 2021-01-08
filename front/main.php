@@ -8,10 +8,12 @@
       margin:auto;
       text-align:center;
       position:relative;
-
+      overflow:hidden;
     }
     .posters > div{
       position:absolute;
+      width:100%;
+      height:100%;
     }
     .posters img{
       width:100%;
@@ -140,6 +142,7 @@ margin:auto;
         break;
       case 2:
         //滑入滑出
+        //利用call back函式在滑出動作完成後才進行滑入的動畫
         $(now).slideUp(1000,function(){
 
           $(next).slideDown(1000);
@@ -149,6 +152,27 @@ margin:auto;
         //縮放
         $(now).hide(1000);
         $(next).show(1000);
+        break;
+      case 4:
+        //滑入滑出
+        $(now).animate({left:-200},1000,function(){
+                $(this).hide()
+                $(this).css({left:0})
+              })
+              $(next).css({left:200})
+                $(next).show()
+                $(next).animate({left:0},1000)
+
+        break;
+      case 5:
+        //縮放
+        $(now).animate({width:0,height:0,top:130,left:100},1000,function(){
+              $(this).hide();
+              $(this).css({width:200,height:260,left:0,top:0})
+                $(next).css({width:0,height:0,top:130,left:100});
+                $(next).show()
+                $(next).animate({width:200,height:260,left:0,top:0})
+              })
         break;
     }
     
