@@ -1,3 +1,7 @@
+  <style>
+    
+  </style>
+  
   <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
@@ -13,13 +17,20 @@
     <h1>院線片清單</h1>
     <div class="rb tab" style="width:95%;display:flex;flex-wrap:wrap;">
       <?php
-        $movies=$Movie->all(['sh'=>1],'order by rank');
+        $today=date("Y-m-d");
+        $startDate=date("Y-m-d",strtotime("-2 days",strtotime($today)));
 
+        $total=$Movie->count(['sh'=>1]," && `ondate` between '$startDate' and '$today'");
+        $div=4;
+        $pages=ceil($total/$div);
+        $now=$_GET['p']??1;
+        // $now=(isset($_GET['p']))?$_GET['p']:1;
+        $start=($now-1)*$div;
+
+        $movies=$Movie->all(['sh'=>1]," && `ondate` between '$startDate' and '$today' order by rank limit $start,$div");
+      // $movies=$Movie->all(['sh'=>1]," && `ondate` >= '$startDate' && `ondate` <= '$today' order by rank");
         foreach($movies as $movie){
-          $date=strtotime($movie['year']."-".$movie['month']."-".$movie['day']);
-          $today=strtotime(date("Y-m-d"));
-
-          if($date<=$today && $date>=strtotime('-2 days',$date)){
+          
             ?>
       <div style="width:48%;margin:3px;border:1px solid #fff;">
         <div style="text-align:center;">片名:<?=$movie['name'];?></div>
@@ -36,12 +47,23 @@
         </div>
       </div>
       <?php
-          }
-
         }
         
         ?>
-      <div class="ct"> </div>
     </div>
+      <div class="ct">
+        <?php
+        if(($now-1)>0){
+          echo "<a href='?p=".($now-1)."'> &lt; </a>";
+        }
+        for($i=1;$i<=$pages;$i++){
+          echo "<a href='?p=$i'>$i</a>";
+        }
+        if(($now+1)<=$pages){
+          echo "<a href='?p=".($now+1)."'> &gt; </a>";
+        }
+        ?>
+    
+      </div>
   </div>
   </div>
