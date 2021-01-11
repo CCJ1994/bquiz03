@@ -44,8 +44,9 @@ include_once "base.php";
 
     // include (file_exists($file))?$file:"front/main.php";
     ?>
-      <div id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
     </div>
+    <div class="ct" id="bo"> ©Copyright 2010~2014 ABC影城 版權所有 </div>
+  </div>
 </body>
 
 </html>
