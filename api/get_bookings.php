@@ -13,6 +13,7 @@ $movie=$Movie->find($_GET['movie']);
 $date=$_GET['date'];
 $session=$_GET['session'];
 
+
 ?>
 <style>
 .seat{

@@ -22,28 +22,12 @@ if($now<=13){
 if($date==date("Y-m-d")){
   
   for($i=$start;$i<=5;$i++){
-    $orders=$Orders->all([
-      'movie'=>$movie['name'],
-      'date'=>$date,
-      'session'=>$sess[$i]
-    ]);
-    $sum=0;
-    foreach ($orders as $ord) {
-      $sum+=$ord['qt'];
-    }
+    $sum=$Orders->q(" select sum(`qt`) from `orders` where `movie`='{$movie['name']}' && `date`='$date' && `session`='{$sess[$i]}'")[0][0];
     echo "<option value='$i'>{$sess[$i]}剩餘座位".(20-$sum)."</option>";
   }
 }else{
   for($i=1;$i<=5;$i++){
-    $orders=$Orders->all([
-      'movie'=>$movie['name'],
-      'date'=>$date,
-      'session'=>$sess[$i]
-    ]);
-    $sum=0;
-    foreach ($orders as $ord) {
-      $sum+=$ord['qt'];
-    }
+    $sum=$Orders->q(" select sum(`qt`) from `orders` where `movie`='{$movie['name']}' && `date`='$date' && `session`='{$sess[$i]}'")[0][0];
     echo "<option value='$i'>{$sess[$i]}剩餘座位".(20-$sum)."</option>";
   }
 
