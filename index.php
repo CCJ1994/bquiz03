@@ -26,6 +26,7 @@ include_once "base.php";
         ABC影城票價全面八折優惠1個月
       </marquee>
     </div>
+<div id="mm">
     <?php
     $do=(isset($_GET['do']))?$_GET['do']:'main';
     $file="./front/".$do.".php";
@@ -33,10 +34,8 @@ include_once "base.php";
       include_once $file;
     }else{
       include_once "./front/main.php";
-
-    }
-
-    ?>
+    } ?>
+    </div>
     <div id="bo"> ©Copyright 2020~2030 ABC影城 版權所有 </div>
   </div>
 </body>
